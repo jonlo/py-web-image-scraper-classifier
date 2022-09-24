@@ -99,7 +99,6 @@ def main(url):
     # content of URL
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0'}
     r=requests.get(url, headers=headers)
- 
     # Parse HTML Code
     soup = BeautifulSoup(r.text, 'html.parser')
     # find all images in URL
