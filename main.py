@@ -1,13 +1,10 @@
 from fastapi import FastAPI
+from routers import images
 
 app = FastAPI()
 
+app.include_router(images.router)
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
-
-
-@app.get("/images/{website}")
-async def read_item(website):
-    return {"website": website}
+    return {"message": "Take a look at the api calls at /docs"}
