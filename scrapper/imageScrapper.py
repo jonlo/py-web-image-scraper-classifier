@@ -22,10 +22,11 @@ def folder_create(images,url):
         os.mkdir(path)
     except:
         pass
-    scrapdata = download_images(images, folder_name)
+    images = download_images(images, path)
+    scrapdata = ScrapData(folder_name, images)
     return scrapdata
  
-def download_images(images, folder_name):
+def download_images(images, path):
     count = 0
     print(f"Total {len(images)} Image Found!")
     image_names = []
@@ -39,7 +40,7 @@ def download_images(images, folder_name):
                 except UnicodeDecodeError:
                     image_name = clean_image_name(image_link)
                     image_names.append(image_name)
-                    with open(f"{folder_name}/images{image_name}.jpg", "wb+") as f:
+                    with open(f"{path}/images{image_name}.jpg", "wb+") as f:
                         f.write(r)
                     count += 1
             except:
@@ -48,7 +49,7 @@ def download_images(images, folder_name):
             print("All Images Downloaded!")
         else:
             print(f"Total {count} Images Downloaded Out of {len(images)}")
-    return ScrapData(folder_name,image_names)
+    return image_names
 
 def get_image_source(image):
     try:
