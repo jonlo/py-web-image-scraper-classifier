@@ -1,7 +1,9 @@
 from bs4 import BeautifulSoup
 import requests
 import os
+import shutil
 from .scrapData import ScrapData
+import files.ImageFiles as ImageFiles
 
 def scrap(url):
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0'}
@@ -13,15 +15,12 @@ def scrap(url):
 
 def folder_create(images,url):
     try:
-        os.mkdir("downloads")
-    except:
-        pass
-    try:
-        folder_name = url.replace("https://", "").replace("http://", "").replace("www.", "").replace("/", "")
+        folder_name = ImageFiles.get_path_for_url(url)
         path = "downloads/"+folder_name
         os.mkdir(path)
     except:
-        pass
+       shutil.rmtree(path)
+    os.mkdir(path)
     images = download_images(images, path)
     scrapdata = ScrapData(folder_name, images)
     return scrapdata
