@@ -3,6 +3,7 @@ from controllers.ImagesController import ImagesController
 from fastapi import APIRouter,HTTPException
 import model.scrapRequest as scrapRequest
 import model.imageRequest as imageRequest
+from model.classifyResponse import ClassifyData
 from scrapper.scrapData import ScrapData
 from fastapi.responses import FileResponse
 
@@ -23,3 +24,10 @@ async def create_item(image_request: imageRequest.ImageRequest):
         return image_path
     except:
         raise HTTPException(status_code=500, detail="Something went wrong")
+@router.get("/classify", response_model=ClassifyData)
+async def create_item(classify_request: scrapRequest.ScrapRequest):
+    # try:
+        scrap_data = ImagesController.classify(classify_request.url)
+        return scrap_data
+    # except:
+    #     raise HTTPException(status_code=500, detail="Something went wrong")

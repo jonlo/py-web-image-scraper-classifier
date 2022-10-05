@@ -39,7 +39,7 @@ def download_images(images, path):
                 except UnicodeDecodeError:
                     image_name = clean_image_name(image_link)
                     image_names.append(image_name)
-                    with open(f"{path}/images{image_name}.jpg", "wb+") as f:
+                    with open(f"{path}/{image_name}.jpg", "wb+") as f:
                         f.write(r)
                     count += 1
             except:
