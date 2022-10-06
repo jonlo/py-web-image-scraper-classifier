@@ -8,6 +8,7 @@ from io import BytesIO
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 original_image_cache = {}
 
 def preprocess_image(image):

@@ -1,9 +1,9 @@
 
 from controllers.ImagesController import ImagesController
 from fastapi import APIRouter,HTTPException
-import model.scrapRequest as scrapRequest
-import model.imageRequest as imageRequest
-from model.classifyResponse import ClassifyData
+import model.request.scrapRequest as scrapRequest
+import model.request.imageRequest as imageRequest
+from model.response.classifyResponse import ClassifyData
 from scrapper.scrapData import ScrapData
 from fastapi.responses import FileResponse
 

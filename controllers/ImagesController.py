@@ -1,6 +1,8 @@
 import scrapper.imageScrapper as ImageScrapper
 import files.ImageFiles as ImageFiles
 import imageclassificator.imageclassificator as imageClassificator
+from model.response.classifyResponse import ClassifyData
+
 class ImagesController:
 	
 	def scrap(url):
@@ -16,6 +18,9 @@ class ImagesController:
 		for image in scrap_data.images:
 			image_path = ImageFiles.get_image_path(url,image)
 			image_class = imageClassificator.classify(image_path)
-			image_classes.append({'id':image, 'class': image_class})
+			if image_class != None:
+				image_classes.append({'id':image, 'class': image_class})
 			print(image_class)
+		data = ClassifyData(image_classes)
+		return data
 		
