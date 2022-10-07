@@ -1,7 +1,7 @@
-import scrapper.imageScrapper as ImageScrapper
-import files.ImageFiles as ImageFiles
-import imageclassificator.imageclassificator as imageClassificator
-from model.response.classifyResponse import ClassifyData
+import src.scrapper.imageScrapper as ImageScrapper
+import src.files.ImageFiles as ImageFiles
+import src.imageclassificator.imageclassificator as imageClassificator
+from API.model.response.classifyResponse import ClassifyData
 
 class ImagesController:
 	

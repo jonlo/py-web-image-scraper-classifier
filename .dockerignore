@@ -1,0 +1,6 @@
+.git
+*Dockerfile*
+*docker-compose*
+.venv
+__pycache__
+downloads/
